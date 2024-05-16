@@ -2,6 +2,7 @@ import os
 import numpy as np
 import torch
 import torch.nn.functional as F
+from torch.utils.tensorboard import SummaryWriter
 import torchaudio
 import argparse
 import soundfile as sf
@@ -20,6 +21,7 @@ from encodec.utils import convert_audio
 from models.tts.valle.valle_inference import VALLEInference
 from copy import deepcopy
 
+
 def log_perplexity(logits, coeffs):
     shift_logits = logits[:, :-1, :].contiguous()
     shift_coeffs = coeffs[:, 1:, :].contiguous()
@@ -33,6 +35,7 @@ class VALLEAttackGDBA(VALLEInference):
                  lr=1e-2,
                  batch_size=5,
                  num_iters=1000,
+                 tensorboard_writer: SummaryWriter = None,
                  print_every=10
     ):
         super(VALLEAttackGDBA, self).__init__(args, cfg)
@@ -43,7 +46,11 @@ class VALLEAttackGDBA(VALLEInference):
         self.supported_mode = ["default", "targeted"]
         self.args = args 
         self.cfg = cfg
+        self.tensorboard_writer = tensorboard_writer
         self.print_every = print_every
+
+    def set_tb_writer(self, tensorboard_writer: SummaryWriter):
+        self.tensorboard_writer = tensorboard_writer
 
     def _build_model(self):
         model = AdvVALLE(self.cfg.model)
@@ -73,21 +80,15 @@ class VALLEAttackGDBA(VALLEInference):
         # Extract discrete codes from EnCodec
         # with torch.no_grad():
         encoded_frames = self.audio_tokenizer.encode(wav)
-        return wav, encoded_frames
+        return encoded_frames
 
         # except FileNotFoundError:
         #     raise FileNotFoundError(f"Audio file not found at {audio_path}")
         # except Exception as e:
         #     raise RuntimeError(f"Error processing audio data: {e}")
     
-
-    def attack(self):
-        # get phone symbol filetext = self.args.text
-        text = self.args.text
-        text_prompt = self.args.text_prompt
-        audio_file = self.args.audio_prompt
+    def tokenizer_text(self, text: str):
         phone_symbol_file = None
-
 
         if self.cfg.preprocess.phone_extractor != "lexicon":
             phone_symbol_file = os.path.join(
@@ -102,7 +103,7 @@ class VALLEAttackGDBA(VALLEInference):
         )
 
         # text = f"{text_prompt}".strip()
-        phone_seq = phone_extractor.extract_phone(text_prompt.strip())  # phone_seq: list
+        phone_seq = phone_extractor.extract_phone(text.strip())  # phone_seq: list
         phone_id_seq = phon_id_collator.get_phone_id_sequence(self.cfg, phone_seq)
         phone_id_seq_len = torch.IntTensor([len(phone_id_seq)]).to(self.device)
 
@@ -110,8 +111,14 @@ class VALLEAttackGDBA(VALLEInference):
         phone_id_seq = np.array([phone_id_seq])
         phone_id_seq = torch.from_numpy(phone_id_seq).to(self.device)
 
+        return phone_id_seq, phone_id_seq_len
+
+    def attack(self, audio_file, text):
+        # get phone symbol filetext = self.args.text
+        phone_id_seq, phone_id_seq_len = self.tokenizer_text(text)
+
         # tokenizer audio
-        wav, encoded_frames = self.tokenize_audio(audio_file)
+        encoded_frames = self.tokenize_audio(audio_file)
         
         # (1, T, 8)
         audio_prompt_token = encoded_frames[0][0].transpose(2, 1).to(self.device)
@@ -119,6 +126,7 @@ class VALLEAttackGDBA(VALLEInference):
         audio_prompt_token_len = torch.IntTensor(
             [audio_prompt_token.shape[1]]
         ).to(self.device)
+
         # Compute prediction
         # encoded_frames, logits = self.model.inference(
         #     phone_id_seq,
@@ -128,8 +136,6 @@ class VALLEAttackGDBA(VALLEInference):
         #     top_k=self.args.top_k,
         #     temperature=self.args.temperature,
         # )
-
-        
 
         # adv_loss = torch.zeros()
         
@@ -208,13 +214,39 @@ class VALLEAttackGDBA(VALLEInference):
             perplexity_loss = log_perplexity(logits, coeffs)
 
             # similariy
-            sim_loss = F.cross_entropy(log_coeffs, audio_prompt_token[0,:,0], reduction="mean")
+            sim_loss = F.cross_entropy(
+                # (B,T,V) -> (B, V, T)
+                coeffs.permute(0, 2, 1), 
+                # (B, T)
+                audio_prompt_token[:,:,0].repeat(self.batch_size, 1), 
+                reduction="mean"
+            )
 
             total_loss = adv_loss + perplexity_loss + sim_loss
             total_loss.backward() 
 
             entropy = torch.sum(-F.log_softmax(log_coeffs, dim=1) * F.softmax(log_coeffs, dim=1))
+
             if i % self.print_every == 0:
+                if self.tensorboard_writer is not None:
+                    filename = os.path.basename(audio_file)
+                    self.tensorboard_writer.add_scalar(
+                        f"{filename}/total_loss", total_loss.item(), i
+                    )
+                    self.tensorboard_writer.add_scalar(
+                        f"{filename}/adv_loss", adv_loss.item(), i
+                    )
+                    self.tensorboard_writer.add_scalar(
+                        f"{filename}/perplexity_loss", perplexity_loss.item(), i
+                    )
+                    self.tensorboard_writer.add_scalar(
+                        f"{filename}/sim_loss", sim_loss.item(), i
+                    )
+                    self.tensorboard_writer.add_scalar(
+                        f"{filename}/entropy", entropy.item(), i
+                    )
+
+
                 print(f'Iteration {i+1}: {total_loss.item()=}, {adv_loss.item()=}, {perplexity_loss.item()=}, {sim_loss.item()=}, {entropy.item()=}')
                 print(log_coeffs)
 
@@ -227,8 +259,9 @@ class VALLEAttackGDBA(VALLEInference):
             
         return log_coeffs
 
-    def sample(self, log_coeffs, audio_file):
-        wav, encoded_frames = self.tokenize_audio(audio_file)
+    def sample(self, log_coeffs, audio_file, text=None):
+        metrics = {}
+        encoded_frames = self.tokenize_audio(audio_file)
 
         ar_codes = deepcopy(encoded_frames[0][0][0][0])
 
@@ -237,10 +270,60 @@ class VALLEAttackGDBA(VALLEInference):
 
         encoded_frames[0][0][0][0] = adv_ids
 
-        print((ar_codes != adv_ids).sum())
-        print((ar_codes != adv_ids).sum() * 100 / len(adv_ids))
+        metrics['n_corrupted_tokens'] = (ar_codes != adv_ids).sum().item()
+        metrics['corrupted_tokens_ratio'] = ((ar_codes != adv_ids).sum() / len(adv_ids)).item()
+        metrics['audio_len'] = len(adv_ids)
 
         wav = self.audio_tokenizer.decode(encoded_frames)
+
+
+        loss_info = None 
+
+        if text is not None:
+            phone_symbol_file = None
+            # convert text to phone sequence
+            phone_extractor = phoneExtractor(self.cfg)
+            # convert phone sequence to phone id sequence
+            phon_id_collator = phoneIDCollation(
+                self.cfg, symbols_dict_file=phone_symbol_file
+            )
+
+            # text = f"{text_prompt}".strip()
+            phone_seq = phone_extractor.extract_phone(text.strip())  # phone_seq: list
+            phone_id_seq = phon_id_collator.get_phone_id_sequence(self.cfg, phone_seq)
+            phone_id_seq_len = torch.IntTensor([len(phone_id_seq)]).to(self.device)
+
+            # convert phone sequence to phone id sequence
+            phone_id_seq = np.array([phone_id_seq])
+            phone_id_seq = torch.from_numpy(phone_id_seq).to(self.device)
+
+            audio_prompt_token = encoded_frames[0][0].transpose(2, 1).to(self.device)
+
+            audio_prompt_token_len = torch.IntTensor(
+                [audio_prompt_token.shape[1]]
+            ).to(self.device)
+
+            with torch.no_grad():
+                _, _, info = self.model(
+                    phone_id_seq,
+                    phone_id_seq_len,
+                    audio_prompt_token,
+                    audio_prompt_token_len
+                )
+
+                adv_loss = -info['ar_loss']
+
+                # perplexity
+                # (B, V, T) -> (B, T, V)
+                logits = info['ar_logits'].permute(0, 2, 1)
+                perplexity_loss = log_perplexity(logits, coeffs)
+
+                # similariy
+                sim_loss = F.cross_entropy(log_coeffs, audio_prompt_token[0,:,0], reduction="mean")
+
+
+
+
 
             # os.makedirs(output_dir, exist_ok=True )
 
@@ -252,7 +335,7 @@ class VALLEAttackGDBA(VALLEInference):
 
         # audio_prompt_token[0] = adv_ids
 
-        return wav.squeeze().detach().cpu().numpy()
+        return wav.squeeze().detach().cpu().numpy(), metrics
     
 class VALLEAttackRandom(VALLEInference):
     def __init__(self, args=None, cfg=None,
@@ -297,7 +380,7 @@ class VALLEAttackRandom(VALLEInference):
         #     raise RuntimeError(f"Error processing audio data: {e}")
     
 
-    def attack(self, audio_file):
+    def attack(self, audio_file, transcription):
         wav, encoded_frames = self.tokenize_audio(audio_file)
 
         # (1, T, 8)
@@ -323,6 +406,7 @@ class VALLEAttackRandom(VALLEInference):
 
     def sample(self, log_coeffs, audio_file):
         wav, encoded_frames = self.tokenize_audio(audio_file)
+        metrics = {} 
 
         ar_codes = deepcopy(encoded_frames[0][0][0][0])
 
@@ -333,12 +417,14 @@ class VALLEAttackRandom(VALLEInference):
 
         encoded_frames[0][0][0][0] = adv_ids
 
-        print((ar_codes != adv_ids).sum())
-        print((ar_codes != adv_ids).sum() * 100 / len(adv_ids))
+        metrics['n_corrupted_tokens'] = (ar_codes != adv_ids).sum().item()
+        metrics['corrupted_tokens_ratio'] = ((ar_codes != adv_ids).sum() / len(adv_ids)).item()
+        metrics['audio_len'] = len(adv_ids)
+
 
         wav = self.audio_tokenizer.decode(encoded_frames)
 
-        return wav.squeeze().detach().cpu().numpy()
+        return wav.squeeze().detach().cpu().numpy(), metrics
 
             # os.makedirs(output_dir, exist_ok=True )
 

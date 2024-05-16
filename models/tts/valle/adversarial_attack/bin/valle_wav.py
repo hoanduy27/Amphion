@@ -10,10 +10,12 @@ import soundfile as sf
 import torch
 from torch.utils.data import DataLoader, Dataset
 from torch.utils.tensorboard import SummaryWriter
-
-from models.tts.valle.valle_pgd import VALLEAttackGDBA, VALLEAttackRandom
 from utils.util import load_config
-from egs.tts.VALLE.const import *
+
+from models.tts.valle.valle_inference import VALLEInference
+# from models.tts.valle.adversarial_attack.attacker import VALLEAttackGDBA, VALLEAttackRandom
+from models.tts.valle.adversarial_attack.const import *
+from models.tts.valle.adversarial_attack.dataio.dataset import AttackDataset
 
 work_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 os.environ['WORK_DIR'] = work_dir 
@@ -22,67 +24,16 @@ os.environ['PYTHONPTH'] = work_dir
 print(os.environ['WORK_DIR'])
 # exit()
 
-@dataclass
-class DataItem:
-    uid: str
-    audio_file: str
-    transcription_file: str
-
-class AttackDataset(Dataset):
-    def __init__(self, data_dir):
-        self.data_dir = data_dir 
-        self.data = self.prepare_data()
-
-    def prepare_data(self):
-        wav_files = list(map(
-            lambda x: (x.split('.')[0], x),
-            glob.glob(os.path.join(self.data_dir, "*.wav"))
-        ))
-        prompt_files = list(map(
-            lambda x: (x.split('.')[0], x),
-            glob.glob(os.path.join(self.data_dir, "*.txt"))
-        ))
-
-        data = {} 
-        ret = []
-
-        for key, val in wav_files:
-            data[key] = [val]
-
-        for key, val in prompt_files:
-            if key in data:
-                data[key].append(val)
-
-        for k,v in data.items():
-            if len(v) < 2:
-                data.pop(k)
-            else:
-                uid = os.path.basename(k)
-                ret.append(
-                    DataItem(
-                        uid=uid, 
-                        audio_file=v[0],
-                        transcription_file=v[1],
-                    )
-                )
-
-        return ret 
-    
-    def __len__(self):
-        return len(self.data)
-
-    def __getitem__(self, i):
-        return self.data[i].uid, self.data[i].audio_file, self.data[i].transcription_file
-
-class GDBAExecutor:
+class WaveformAttackExecutor:
     def __init__(
             self, 
-            attacker: VALLEAttackGDBA, 
+            attacker, 
             egs_name, 
             data_dir, 
             text, 
             n_inferences=10,
-            skip_attack_if_coeff_exists=True
+            skip_attack_if_coeff_exists=True,
+            inferencer: VALLEInference = None 
         ):
         self.attacker = attacker 
         self.egs_name = egs_name
@@ -90,6 +41,10 @@ class GDBAExecutor:
         self.n_inferences = n_inferences
         self.text = text
         self.skip_attack_if_coeff_exists = skip_attack_if_coeff_exists
+        if inferencer is not None:
+            self.inferencer = VALLEInference
+        else:
+            self.inferencer = attacker
 
     def on_attack_begin(self):
         self.egs_dir = os.path.join(

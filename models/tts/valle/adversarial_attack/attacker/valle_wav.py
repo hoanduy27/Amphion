@@ -40,7 +40,10 @@ class GaussianGenerator(NoiseGenerator):
 
         return audio + noise * scale
 
-class GaussianAttack:
+class WaveformAttack:
+    pass
+
+class GaussianAttack(WaveformAttack):
     def __init__(self, snr=None):
         self.snr = snr 
         if self.snr:
@@ -57,7 +60,7 @@ class GaussianAttack:
 
         return perturbed_wav, sr
     
-class AudioSealAttack:
+class AudioSealAttack(WaveformAttack):
     def __init__(self, model_path):
         self.model = AudioSeal.load_generator(model_path)
 
