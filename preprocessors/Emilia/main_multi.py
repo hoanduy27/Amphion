@@ -9,8 +9,8 @@ import os
 import subprocess
 import time
 
-from utils.logger import Logger
-from utils.tool import get_gpu_nums
+from libs.Amphion.utils.logger import Logger
+from libs.Amphion.utils.tool import get_gpu_nums
 
 
 def run_script(args, gpu_id, self_id):

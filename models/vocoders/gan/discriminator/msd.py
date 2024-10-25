@@ -9,7 +9,7 @@ import torch.nn as nn
 from torch.nn import Conv1d, AvgPool1d
 from torch.nn.utils import weight_norm, spectral_norm
 from torch import nn
-from modules.vocoder_blocks import *
+from libs.Amphion.modules.vocoder_blocks import *
 
 
 LRELU_SLOPE = 0.1

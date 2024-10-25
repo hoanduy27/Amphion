@@ -11,8 +11,8 @@ import numpy as np
 from torch.nn import functional as F
 
 from torch.nn.utils.rnn import pad_sequence
-from utils.data_utils import *
-from models.vocoders.vocoder_dataset import VocoderDataset
+from libs.Amphion.utils.data_utils import *
+from libs.Amphion.models.vocoders.vocoder_dataset import VocoderDataset
 
 
 class GANVocoderDataset(VocoderDataset):

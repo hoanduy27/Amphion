@@ -8,7 +8,7 @@
 from torch import nn
 from torch.nn import functional as F
 import math
-from modules.flow.modules import *
+from libs.Amphion.modules.flow.modules import *
 
 
 class StochasticDurationPredictor(nn.Module):

@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 
 import re
-from preprocessors import (
+from libs.Amphion.preprocessors import (
     m4singer,
     opencpop,
     svcc,

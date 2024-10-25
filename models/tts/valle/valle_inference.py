@@ -10,13 +10,13 @@ import torchaudio
 import argparse
 
 
-from text.g2p_module import G2PModule
-from utils.tokenizer import AudioTokenizer, tokenize_audio
-from models.tts.valle.valle import VALLE
-from models.tts.base.tts_inferece import TTSInference
-from models.tts.valle.valle_dataset import VALLETestDataset, VALLETestCollator
-from processors.phone_extractor import phoneExtractor
-from text.text_token_collation import phoneIDCollation
+from libs.Amphion.text.g2p_module import G2PModule
+from libs.Amphion.utils.tokenizer import AudioTokenizer, tokenize_audio
+from libs.Amphion.models.tts.valle.valle import VALLE
+from libs.Amphion.models.tts.base.tts_inferece import TTSInference
+from libs.Amphion.models.tts.valle.valle_dataset import VALLETestDataset, VALLETestCollator
+from libs.Amphion.processors.phone_extractor import phoneExtractor
+from libs.Amphion.text.text_token_collation import phoneIDCollation
 
 
 class VALLEInference(TTSInference):

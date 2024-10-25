@@ -26,35 +26,35 @@ from librosa.filters import mel as librosa_mel_fn
 from accelerate.logging import get_logger
 from pathlib import Path
 
-from utils.io import save_audio
-from utils.data_utils import *
-from utils.util import (
+from libs.Amphion.utils.io import save_audio
+from libs.Amphion.utils.data_utils import *
+from libs.Amphion.utils.util import (
     Logger,
     ValueWindow,
     remove_older_ckpt,
     set_all_random_seed,
     save_config,
 )
-from utils.mel import extract_mel_features
-from models.vocoders.vocoder_trainer import VocoderTrainer
-from models.vocoders.gan.gan_vocoder_dataset import (
+from libs.Amphion.utils.mel import extract_mel_features
+from libs.Amphion.models.vocoders.vocoder_trainer import VocoderTrainer
+from libs.Amphion.models.vocoders.gan.gan_vocoder_dataset import (
     GANVocoderDataset,
     GANVocoderCollator,
 )
 
-from models.vocoders.gan.generator.bigvgan import BigVGAN
-from models.vocoders.gan.generator.hifigan import HiFiGAN
-from models.vocoders.gan.generator.melgan import MelGAN
-from models.vocoders.gan.generator.nsfhifigan import NSFHiFiGAN
-from models.vocoders.gan.generator.apnet import APNet
+from libs.Amphion.models.vocoders.gan.generator.bigvgan import BigVGAN
+from libs.Amphion.models.vocoders.gan.generator.hifigan import HiFiGAN
+from libs.Amphion.models.vocoders.gan.generator.melgan import MelGAN
+from libs.Amphion.models.vocoders.gan.generator.nsfhifigan import NSFHiFiGAN
+from libs.Amphion.models.vocoders.gan.generator.apnet import APNet
 
-from models.vocoders.gan.discriminator.mpd import MultiPeriodDiscriminator
-from models.vocoders.gan.discriminator.mrd import MultiResolutionDiscriminator
-from models.vocoders.gan.discriminator.mssbcqtd import MultiScaleSubbandCQTDiscriminator
-from models.vocoders.gan.discriminator.msd import MultiScaleDiscriminator
-from models.vocoders.gan.discriminator.msstftd import MultiScaleSTFTDiscriminator
+from libs.Amphion.models.vocoders.gan.discriminator.mpd import MultiPeriodDiscriminator
+from libs.Amphion.models.vocoders.gan.discriminator.mrd import MultiResolutionDiscriminator
+from libs.Amphion.models.vocoders.gan.discriminator.mssbcqtd import MultiScaleSubbandCQTDiscriminator
+from libs.Amphion.models.vocoders.gan.discriminator.msd import MultiScaleDiscriminator
+from libs.Amphion.models.vocoders.gan.discriminator.msstftd import MultiScaleSTFTDiscriminator
 
-from models.vocoders.gan.gan_vocoder_inference import vocoder_inference
+from libs.Amphion.models.vocoders.gan.gan_vocoder_inference import vocoder_inference
 
 supported_generators = {
     "bigvgan": BigVGAN,
@@ -811,7 +811,7 @@ class GANVocoderTrainer(VocoderTrainer):
                 imag_pred,
                 audio_pred,
             ) = self.generator.forward(mel_input)
-            from utils.mel import amplitude_phase_spectrum
+            from libs.Amphion.utils.mel import amplitude_phase_spectrum
 
             _, _, rea_pred_final, imag_pred_final = amplitude_phase_spectrum(
                 audio_pred.squeeze(1), self.cfg.preprocess
@@ -974,7 +974,7 @@ class GANVocoderTrainer(VocoderTrainer):
                 imag_pred,
                 audio_pred,
             ) = self.generator.forward(mel_input)
-            from utils.mel import amplitude_phase_spectrum
+            from libs.Amphion.utils.mel import amplitude_phase_spectrum
 
             _, _, rea_pred_final, imag_pred_final = amplitude_phase_spectrum(
                 audio_pred.squeeze(1), self.cfg.preprocess

@@ -8,15 +8,15 @@ import torch
 from tqdm import tqdm
 from collections import OrderedDict
 
-from models.tts.base.tts_inferece import TTSInference
-from models.tts.jets.jets_dataset import JetsTestDataset, JetsTestCollator
-from utils.util import load_config
-from utils.io import save_audio
-from models.tts.jets.jets import Jets
-from models.vocoders.vocoder_inference import synthesis
+from libs.Amphion.models.tts.base.tts_inferece import TTSInference
+from libs.Amphion.models.tts.jets.jets_dataset import JetsTestDataset, JetsTestCollator
+from libs.Amphion.utils.util import load_config
+from libs.Amphion.utils.io import save_audio
+from libs.Amphion.models.tts.jets.jets import Jets
+from libs.Amphion.models.vocoders.vocoder_inference import synthesis
 from pathlib import Path
-from processors.phone_extractor import phoneExtractor
-from text.text_token_collation import phoneIDCollation
+from libs.Amphion.processors.phone_extractor import phoneExtractor
+from libs.Amphion.text.text_token_collation import phoneIDCollation
 import numpy as np
 import json
 import time

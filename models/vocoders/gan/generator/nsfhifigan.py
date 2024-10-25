@@ -12,8 +12,8 @@ import torch.nn.functional as F
 from torch.nn import Conv1d, ConvTranspose1d
 from torch.nn.utils import weight_norm, remove_weight_norm, spectral_norm
 
-from modules.neural_source_filter import *
-from modules.vocoder_blocks import *
+from libs.Amphion.modules.neural_source_filter import *
+from libs.Amphion.modules.vocoder_blocks import *
 
 
 LRELU_SLOPE = 0.1

@@ -9,16 +9,16 @@ import torch
 import numpy as np
 from torch.utils.data import DataLoader
 from torch.nn.parallel import DistributedDataParallel
-from optimizer.optimizers import Eve, ScaledAdam
-from schedulers.scheduler import NoamScheduler, Eden
-from models.tts.valle.valle_dataset import (
+from libs.Amphion.optimizer.optimizers import Eve, ScaledAdam
+from libs.Amphion.schedulers.scheduler import NoamScheduler, Eden
+from libs.Amphion.models.tts.valle.valle_dataset import (
     VALLEDataset,
     VALLECollator,
     batch_by_size,
 )
-from models.base.base_sampler import VariableSampler
-from models.tts.base import TTSTrainer
-from models.tts.valle.valle import VALLE
+from libs.Amphion.models.base.base_sampler import VariableSampler
+from libs.Amphion.models.tts.base import TTSTrainer
+from libs.Amphion.models.tts.valle.valle import VALLE
 import diffusers
 
 

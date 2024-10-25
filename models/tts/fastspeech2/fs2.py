@@ -9,8 +9,8 @@ import torch.nn as nn
 import numpy as np
 import torch.nn.functional as F
 
-from modules.transformer.Models import Encoder, Decoder
-from modules.transformer.Layers import PostNet
+from libs.Amphion.modules.transformer.Models import Encoder, Decoder
+from libs.Amphion.modules.transformer.Layers import PostNet
 from collections import OrderedDict
 
 import os

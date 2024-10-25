@@ -6,8 +6,8 @@
 import torch
 import torch.nn as nn
 
-from modules.encoder.position_encoder import PositionEncoder
-from modules.general.utils import append_dims, ConvNd, normalization, zero_module
+from libs.Amphion.modules.encoder.position_encoder import PositionEncoder
+from libs.Amphion.modules.general.utils import append_dims, ConvNd, normalization, zero_module
 from .attention import AttentionBlock
 from .resblock import Downsample, ResBlock, Upsample
 

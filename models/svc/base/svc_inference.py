@@ -3,8 +3,8 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
-from models.base.new_inference import BaseInference
-from models.svc.base.svc_dataset import SVCTestCollator, SVCTestDataset
+from libs.Amphion.models.base.new_inference import BaseInference
+from libs.Amphion.models.svc.base.svc_dataset import SVCTestCollator, SVCTestDataset
 
 
 class SVCInference(BaseInference):

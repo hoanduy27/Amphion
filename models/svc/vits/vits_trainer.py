@@ -10,15 +10,15 @@ from pathlib import Path
 import shutil
 import accelerate
 
-# from models.svc.base import SVCTrainer
-from models.svc.base.svc_dataset import SVCOfflineCollator, SVCOfflineDataset
-from models.svc.vits.vits import *
-from models.svc.base import SVCTrainer
+# from libs.Amphion.models.svc.base import SVCTrainer
+from libs.Amphion.models.svc.base.svc_dataset import SVCOfflineCollator, SVCOfflineDataset
+from libs.Amphion.models.svc.vits.vits import *
+from libs.Amphion.models.svc.base import SVCTrainer
 
-from utils.mel import mel_spectrogram_torch
+from libs.Amphion.utils.mel import mel_spectrogram_torch
 import json
 
-from models.vocoders.gan.discriminator.mpd import (
+from libs.Amphion.models.vocoders.gan.discriminator.mpd import (
     MultiPeriodDiscriminator_vits as MultiPeriodDiscriminator,
 )
 

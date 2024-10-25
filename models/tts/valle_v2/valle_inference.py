@@ -66,7 +66,7 @@ class ValleInference(torch.nn.Module):
         ), "Only one of use_speechtokenizer and use_vocos can be True"
         self.use_speechtokenizer = use_speechtokenizer
         if use_speechtokenizer:
-            from models.codec.speechtokenizer.model import SpeechTokenizer
+            from libs.Amphion.models.codec.speechtokenizer.model import SpeechTokenizer
 
             # download from https://huggingface.co/fnlp/SpeechTokenizer/tree/main/speechtokenizer_hubert_avg
             config_path = speechtokenizer_path + "/config.json"

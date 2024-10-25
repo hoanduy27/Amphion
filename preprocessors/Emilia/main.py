@@ -16,7 +16,7 @@ from pydub import AudioSegment
 from pyannote.audio import Pipeline
 import pandas as pd
 
-from utils.tool import (
+from libs.Amphion.utils.tool import (
     export_to_mp3,
     load_cfg,
     get_audio_files,
@@ -24,8 +24,8 @@ from utils.tool import (
     check_env,
     calculate_audio_stats,
 )
-from utils.logger import Logger, time_logger
-from models import separate_fast, dnsmos, whisper_asr, silero_vad
+from libs.Amphion.utils.logger import Logger, time_logger
+from libs.Amphion.models import separate_fast, dnsmos, whisper_asr, silero_vad
 
 warnings.filterwarnings("ignore")
 audio_count = 0

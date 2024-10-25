@@ -26,7 +26,7 @@
 from typing import Tuple, Union
 
 import torch
-from modules.wenet_extractor.transformer.subsampling import BaseSubsampling
+from libs.Amphion.modules.wenet_extractor.transformer.subsampling import BaseSubsampling
 
 
 class Conv2dSubsampling2(BaseSubsampling):

@@ -28,7 +28,7 @@ from typing import Tuple, Optional
 import torch
 from torch import nn
 import torch.nn.functional as F
-from modules.wenet_extractor.transformer.attention import MultiHeadedAttention
+from libs.Amphion.modules.wenet_extractor.transformer.attention import MultiHeadedAttention
 
 
 class GroupedRelPositionMultiHeadedAttention(MultiHeadedAttention):

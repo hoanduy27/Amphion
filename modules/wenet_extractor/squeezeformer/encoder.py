@@ -23,26 +23,26 @@
 import torch
 import torch.nn as nn
 from typing import Tuple, Union, Optional, List
-from modules.wenet_extractor.squeezeformer.subsampling import (
+from libs.Amphion.modules.wenet_extractor.squeezeformer.subsampling import (
     DepthwiseConv2dSubsampling4,
     TimeReductionLayer1D,
     TimeReductionLayer2D,
     TimeReductionLayerStream,
 )
-from modules.wenet_extractor.squeezeformer.encoder_layer import (
+from libs.Amphion.modules.wenet_extractor.squeezeformer.encoder_layer import (
     SqueezeformerEncoderLayer,
 )
-from modules.wenet_extractor.transformer.embedding import RelPositionalEncoding
-from modules.wenet_extractor.transformer.attention import MultiHeadedAttention
-from modules.wenet_extractor.squeezeformer.attention import (
+from libs.Amphion.modules.wenet_extractor.transformer.embedding import RelPositionalEncoding
+from libs.Amphion.modules.wenet_extractor.transformer.attention import MultiHeadedAttention
+from libs.Amphion.modules.wenet_extractor.squeezeformer.attention import (
     RelPositionMultiHeadedAttention,
 )
-from modules.wenet_extractor.squeezeformer.positionwise_feed_forward import (
+from libs.Amphion.modules.wenet_extractor.squeezeformer.positionwise_feed_forward import (
     PositionwiseFeedForward,
 )
-from modules.wenet_extractor.squeezeformer.convolution import ConvolutionModule
-from modules.wenet_extractor.utils.mask import make_pad_mask, add_optional_chunk_mask
-from modules.wenet_extractor.utils.common import get_activation
+from libs.Amphion.modules.wenet_extractor.squeezeformer.convolution import ConvolutionModule
+from libs.Amphion.modules.wenet_extractor.utils.mask import make_pad_mask, add_optional_chunk_mask
+from libs.Amphion.modules.wenet_extractor.utils.common import get_activation
 
 
 class SqueezeformerEncoder(nn.Module):

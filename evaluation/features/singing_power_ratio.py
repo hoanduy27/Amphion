@@ -6,9 +6,9 @@
 import torch
 import librosa
 
-from utils.util import JsonHParams
-from utils.f0 import get_f0_features_using_parselmouth, get_pitch_sub_median
-from utils.mel import extract_mel_features
+from libs.Amphion.utils.util import JsonHParams
+from libs.Amphion.utils.f0 import get_f0_features_using_parselmouth, get_pitch_sub_median
+from libs.Amphion.utils.mel import extract_mel_features
 
 
 def extract_spr(

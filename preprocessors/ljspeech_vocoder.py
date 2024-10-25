@@ -9,7 +9,7 @@ import torchaudio
 from tqdm import tqdm
 from glob import glob
 
-from utils.util import has_existed
+from libs.Amphion.utils.util import has_existed
 
 
 def main(output_path, dataset_path):

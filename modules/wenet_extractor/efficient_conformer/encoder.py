@@ -27,34 +27,34 @@ import torch
 import logging
 import torch.nn.functional as F
 
-from modules.wenet_extractor.transformer.positionwise_feed_forward import (
+from libs.Amphion.modules.wenet_extractor.transformer.positionwise_feed_forward import (
     PositionwiseFeedForward,
 )
-from modules.wenet_extractor.transformer.embedding import PositionalEncoding
-from modules.wenet_extractor.transformer.embedding import RelPositionalEncoding
-from modules.wenet_extractor.transformer.embedding import NoPositionalEncoding
-from modules.wenet_extractor.transformer.subsampling import Conv2dSubsampling4
-from modules.wenet_extractor.transformer.subsampling import Conv2dSubsampling6
-from modules.wenet_extractor.transformer.subsampling import Conv2dSubsampling8
-from modules.wenet_extractor.transformer.subsampling import LinearNoSubsampling
-from modules.wenet_extractor.transformer.attention import MultiHeadedAttention
-from modules.wenet_extractor.transformer.attention import (
+from libs.Amphion.modules.wenet_extractor.transformer.embedding import PositionalEncoding
+from libs.Amphion.modules.wenet_extractor.transformer.embedding import RelPositionalEncoding
+from libs.Amphion.modules.wenet_extractor.transformer.embedding import NoPositionalEncoding
+from libs.Amphion.modules.wenet_extractor.transformer.subsampling import Conv2dSubsampling4
+from libs.Amphion.modules.wenet_extractor.transformer.subsampling import Conv2dSubsampling6
+from libs.Amphion.modules.wenet_extractor.transformer.subsampling import Conv2dSubsampling8
+from libs.Amphion.modules.wenet_extractor.transformer.subsampling import LinearNoSubsampling
+from libs.Amphion.modules.wenet_extractor.transformer.attention import MultiHeadedAttention
+from libs.Amphion.modules.wenet_extractor.transformer.attention import (
     RelPositionMultiHeadedAttention,
 )
-from modules.wenet_extractor.transformer.encoder_layer import ConformerEncoderLayer
+from libs.Amphion.modules.wenet_extractor.transformer.encoder_layer import ConformerEncoderLayer
 
-from modules.wenet_extractor.efficient_conformer.subsampling import Conv2dSubsampling2
-from modules.wenet_extractor.efficient_conformer.convolution import ConvolutionModule
-from modules.wenet_extractor.efficient_conformer.attention import (
+from libs.Amphion.modules.wenet_extractor.efficient_conformer.subsampling import Conv2dSubsampling2
+from libs.Amphion.modules.wenet_extractor.efficient_conformer.convolution import ConvolutionModule
+from libs.Amphion.modules.wenet_extractor.efficient_conformer.attention import (
     GroupedRelPositionMultiHeadedAttention,
 )
-from modules.wenet_extractor.efficient_conformer.encoder_layer import (
+from libs.Amphion.modules.wenet_extractor.efficient_conformer.encoder_layer import (
     StrideConformerEncoderLayer,
 )
 
-from modules.wenet_extractor.utils.common import get_activation
-from modules.wenet_extractor.utils.mask import make_pad_mask
-from modules.wenet_extractor.utils.mask import add_optional_chunk_mask
+from libs.Amphion.modules.wenet_extractor.utils.common import get_activation
+from libs.Amphion.modules.wenet_extractor.utils.mask import make_pad_mask
+from libs.Amphion.modules.wenet_extractor.utils.mask import add_optional_chunk_mask
 
 
 class EfficientConformerEncoder(torch.nn.Module):

@@ -18,7 +18,7 @@ import re
 import torchaudio
 
 from cuhkszsvc.configs.config_parse import get_wav_path, get_wav_file_path
-from utils.io import has_existed
+from libs.Amphion.utils.io import has_existed
 
 
 def get_mcep_params(fs):

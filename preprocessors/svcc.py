@@ -8,8 +8,8 @@ import glob
 import librosa
 import json
 
-from utils.util import has_existed
-from preprocessors import GOLDEN_TEST_SAMPLES
+from libs.Amphion.utils.util import has_existed
+from libs.Amphion.preprocessors import GOLDEN_TEST_SAMPLES
 
 
 def main(output_path, dataset_path):

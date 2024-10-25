@@ -11,9 +11,9 @@ from tqdm import tqdm
 from glob import glob
 from collections import defaultdict
 
-from utils.util import has_existed
-from utils.audio_slicer import split_utterances_from_audio
-from preprocessors import GOLDEN_TEST_SAMPLES
+from libs.Amphion.utils.util import has_existed
+from libs.Amphion.utils.audio_slicer import split_utterances_from_audio
+from libs.Amphion.preprocessors import GOLDEN_TEST_SAMPLES
 
 
 def _split_utts():

@@ -5,8 +5,8 @@
 
 """ This code is modified from https://github.com/keithito/tacotron """
 import re
-from text import cleaners
-from text.symbols import symbols
+from libs.Amphion.text import cleaners
+from libs.Amphion.text.symbols import symbols
 
 
 # Mappings from symbol to numeric ID and vice versa:

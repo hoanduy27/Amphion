@@ -68,7 +68,7 @@ s2a_full_ckpt = hf_hub_download("amphion/MaskGCT", filename="s2a_model/s2a_model
 You can use the following code to generate speech from text and a prompt speech (the code is also provided in [inference.py](../../../models/tts/maskgct/maskgct_inference.py)).
 
 ```python
-from models.tts.maskgct.maskgct_utils import *
+from libs.Amphion.models.tts.maskgct.maskgct_utils import *
 from huggingface_hub import hf_hub_download
 import safetensors
 import soundfile as sf

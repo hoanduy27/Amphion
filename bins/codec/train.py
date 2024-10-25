@@ -7,9 +7,9 @@ import argparse
 
 import torch
 
-from models.codec.facodec.facodec_trainer import FAcodecTrainer
+from libs.Amphion.models.codec.facodec.facodec_trainer import FAcodecTrainer
 
-from utils.util import load_config
+from libs.Amphion.utils.util import load_config
 
 
 def build_trainer(args, cfg):

@@ -8,7 +8,7 @@ import torch.nn.functional as F
 import torch.nn as nn
 from torch.nn import Conv1d, ConvTranspose1d
 from torch.nn.utils import weight_norm, remove_weight_norm
-from modules.vocoder_blocks import *
+from libs.Amphion.modules.vocoder_blocks import *
 
 
 LRELU_SLOPE = 0.1

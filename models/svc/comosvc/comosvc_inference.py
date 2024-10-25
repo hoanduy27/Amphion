@@ -5,9 +5,9 @@
 
 import torch
 
-from models.svc.base import SVCInference
-from modules.encoder.condition_encoder import ConditionEncoder
-from models.svc.comosvc.comosvc import ComoSVC
+from libs.Amphion.models.svc.base import SVCInference
+from libs.Amphion.modules.encoder.condition_encoder import ConditionEncoder
+from libs.Amphion.models.svc.comosvc.comosvc import ComoSVC
 
 
 class ComoSVCInference(SVCInference):

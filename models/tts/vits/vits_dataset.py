@@ -6,9 +6,9 @@
 import os
 import json
 import numpy as np
-from text import text_to_sequence
-from text.text_token_collation import phoneIDCollation
-from models.tts.base.tts_dataset import (
+from libs.Amphion.text import text_to_sequence
+from libs.Amphion.text.text_token_collation import phoneIDCollation
+from libs.Amphion.models.tts.base.tts_dataset import (
     TTSDataset,
     TTSCollator,
     TTSTestDataset,

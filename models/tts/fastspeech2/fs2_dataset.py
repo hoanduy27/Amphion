@@ -6,14 +6,14 @@
 import random
 import torch
 from torch.nn.utils.rnn import pad_sequence
-from utils.data_utils import *
-from models.base.base_dataset import (
+from libs.Amphion.utils.data_utils import *
+from libs.Amphion.models.base.base_dataset import (
     BaseOfflineCollator,
     BaseOfflineDataset,
     BaseTestDataset,
     BaseTestCollator,
 )
-from text import text_to_sequence
+from libs.Amphion.text import text_to_sequence
 
 
 class FS2Dataset(BaseOfflineDataset):

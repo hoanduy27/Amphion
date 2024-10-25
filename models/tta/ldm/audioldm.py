@@ -15,7 +15,7 @@ import torch.nn.functional as F
 import numpy as np
 from einops import repeat
 
-from models.tta.ldm.attention import SpatialTransformer
+from libs.Amphion.models.tta.ldm.attention import SpatialTransformer
 
 # from attention import SpatialTransformer
 

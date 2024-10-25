@@ -11,14 +11,14 @@ import torch.nn.functional as F
 from einops import rearrange
 from torch.nn.utils import weight_norm
 
-from models.codec.amphion_codec.quantize import (
+from libs.Amphion.models.codec.amphion_codec.quantize import (
     ResidualVQ,
     VectorQuantize,
     FactorizedVectorQuantize,
     LookupFreeQuantize,
 )
 
-from models.codec.amphion_codec.vocos import Vocos
+from libs.Amphion.models.codec.amphion_codec.vocos import Vocos
 
 
 def WNConv1d(*args, **kwargs):

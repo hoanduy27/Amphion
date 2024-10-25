@@ -5,19 +5,19 @@ import torchaudio
 from torch import nn
 from torch.nn.utils.rnn import pad_sequence
 
-from modules.wenet_extractor.transducer.predictor import PredictorBase
-from modules.wenet_extractor.transducer.search.greedy_search import basic_greedy_search
-from modules.wenet_extractor.transducer.search.prefix_beam_search import (
+from libs.Amphion.modules.wenet_extractor.transducer.predictor import PredictorBase
+from libs.Amphion.modules.wenet_extractor.transducer.search.greedy_search import basic_greedy_search
+from libs.Amphion.modules.wenet_extractor.transducer.search.prefix_beam_search import (
     PrefixBeamSearch,
 )
-from modules.wenet_extractor.transformer.asr_model import ASRModel
-from modules.wenet_extractor.transformer.ctc import CTC
-from modules.wenet_extractor.transformer.decoder import (
+from libs.Amphion.modules.wenet_extractor.transformer.asr_model import ASRModel
+from libs.Amphion.modules.wenet_extractor.transformer.ctc import CTC
+from libs.Amphion.modules.wenet_extractor.transformer.decoder import (
     BiTransformerDecoder,
     TransformerDecoder,
 )
-from modules.wenet_extractor.transformer.label_smoothing_loss import LabelSmoothingLoss
-from modules.wenet_extractor.utils.common import (
+from libs.Amphion.modules.wenet_extractor.transformer.label_smoothing_loss import LabelSmoothingLoss
+from libs.Amphion.modules.wenet_extractor.utils.common import (
     IGNORE_ID,
     add_blank,
     add_sos_eos,

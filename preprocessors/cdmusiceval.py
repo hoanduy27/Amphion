@@ -10,8 +10,8 @@ import torchaudio
 from tqdm import tqdm
 from collections import defaultdict
 
-from utils.util import has_existed, remove_and_create
-from utils.audio_slicer import split_utterances_from_audio
+from libs.Amphion.utils.util import has_existed, remove_and_create
+from libs.Amphion.utils.audio_slicer import split_utterances_from_audio
 
 
 def split_to_utterances(input_dir, output_dir):

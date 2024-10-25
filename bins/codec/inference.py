@@ -7,8 +7,8 @@ import argparse
 from argparse import ArgumentParser
 import os
 
-from models.codec.facodec.facodec_inference import FAcodecInference
-from utils.util import load_config
+from libs.Amphion.models.codec.facodec.facodec_inference import FAcodecInference
+from libs.Amphion.utils.util import load_config
 import torch
 
 

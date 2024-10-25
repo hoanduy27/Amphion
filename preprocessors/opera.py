@@ -11,10 +11,10 @@ import torchaudio
 from glob import glob
 from collections import defaultdict
 
-from utils.util import has_existed
-from utils.io import save_audio
-from utils.audio_slicer import Slicer
-from preprocessors import GOLDEN_TEST_SAMPLES
+from libs.Amphion.utils.util import has_existed
+from libs.Amphion.utils.io import save_audio
+from libs.Amphion.utils.audio_slicer import Slicer
+from libs.Amphion.preprocessors import GOLDEN_TEST_SAMPLES
 
 
 def split_to_utterances(language_dir, output_dir):

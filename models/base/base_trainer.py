@@ -15,8 +15,8 @@ from torch.nn.parallel import DistributedDataParallel
 from torch.utils.data import ConcatDataset, DataLoader
 from torch.utils.tensorboard import SummaryWriter
 
-from models.base.base_sampler import BatchSampler
-from utils.util import (
+from libs.Amphion.models.base.base_sampler import BatchSampler
+from libs.Amphion.utils.util import (
     Logger,
     remove_older_ckpt,
     save_config,

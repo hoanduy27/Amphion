@@ -10,10 +10,10 @@ import numpy as np
 import math
 from tqdm.auto import tqdm
 
-from utils.ssim import SSIM
+from libs.Amphion.utils.ssim import SSIM
 
-from models.svc.transformer.conformer import Conformer, BaseModule
-from models.svc.diffusion.diffusion_wrapper import DiffusionWrapper
+from libs.Amphion.models.svc.transformer.conformer import Conformer, BaseModule
+from libs.Amphion.models.svc.diffusion.diffusion_wrapper import DiffusionWrapper
 
 
 class Consistency(nn.Module):

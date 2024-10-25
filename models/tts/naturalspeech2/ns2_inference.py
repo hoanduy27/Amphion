@@ -9,14 +9,14 @@ import torch
 import soundfile as sf
 import numpy as np
 
-from models.tts.naturalspeech2.ns2 import NaturalSpeech2
+from libs.Amphion.models.tts.naturalspeech2.ns2 import NaturalSpeech2
 from encodec import EncodecModel
 from encodec.utils import convert_audio
-from utils.util import load_config
+from libs.Amphion.utils.util import load_config
 
-from text import text_to_sequence
-from text.cmudict import valid_symbols
-from text.g2p import preprocess_english, read_lexicon
+from libs.Amphion.text import text_to_sequence
+from libs.Amphion.text.cmudict import valid_symbols
+from libs.Amphion.text.g2p import preprocess_english, read_lexicon
 
 import torchaudio
 

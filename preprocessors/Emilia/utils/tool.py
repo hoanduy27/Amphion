@@ -17,7 +17,7 @@ import tqdm
 import subprocess
 import re
 
-from utils.logger import Logger, time_logger
+from libs.Amphion.utils.logger import Logger, time_logger
 
 
 def load_cfg(cfg_path):

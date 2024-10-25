@@ -8,7 +8,7 @@ import torch.nn.functional as F
 import torch.nn as nn
 from torch.nn import Conv1d, ConvTranspose1d, AvgPool1d, Conv2d
 from torch.nn.utils import weight_norm, remove_weight_norm, spectral_norm
-from models.tta.ldm.inference_utils.utils import get_padding, init_weights
+from libs.Amphion.models.tta.ldm.inference_utils.utils import get_padding, init_weights
 
 LRELU_SLOPE = 0.1
 

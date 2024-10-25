@@ -9,18 +9,18 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from utils.util import *
-from modules.flow.modules import *
-from modules.base.base_module import *
-from modules.transformer.attentions import Encoder
-from modules.duration_predictor.standard_duration_predictor import DurationPredictor
-from modules.duration_predictor.stochastic_duration_predictor import (
+from libs.Amphion.utils.util import *
+from libs.Amphion.modules.flow.modules import *
+from libs.Amphion.modules.base.base_module import *
+from libs.Amphion.modules.transformer.attentions import Encoder
+from libs.Amphion.modules.duration_predictor.standard_duration_predictor import DurationPredictor
+from libs.Amphion.modules.duration_predictor.stochastic_duration_predictor import (
     StochasticDurationPredictor,
 )
-from models.vocoders.gan.generator.hifigan import HiFiGAN_vits as Generator
+from libs.Amphion.models.vocoders.gan.generator.hifigan import HiFiGAN_vits as Generator
 
 try:
-    from modules import monotonic_align
+    from libs.Amphion.modules import monotonic_align
 except ImportError:
     print("Monotonic align not found. Please make sure you have compiled it.")
 

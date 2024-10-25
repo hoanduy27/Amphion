@@ -13,9 +13,9 @@ import pandas as pd
 from glob import glob
 from collections import defaultdict
 
-from utils.io import save_audio
-from utils.util import has_existed
-from preprocessors import GOLDEN_TEST_SAMPLES
+from libs.Amphion.utils.io import save_audio
+from libs.Amphion.utils.util import has_existed
+from libs.Amphion.preprocessors import GOLDEN_TEST_SAMPLES
 
 
 def save_utterance(output_file, waveform, fs, start, end, overlap=0.1):

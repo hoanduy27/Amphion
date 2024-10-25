@@ -30,9 +30,9 @@ from typing import NamedTuple
 
 import torch
 
-from modules.wenet_extractor.paraformer.utils import end_detect
-from modules.wenet_extractor.paraformer.search.ctc import CTCPrefixScorer
-from modules.wenet_extractor.paraformer.search.scorer_interface import (
+from libs.Amphion.modules.wenet_extractor.paraformer.utils import end_detect
+from libs.Amphion.modules.wenet_extractor.paraformer.search.ctc import CTCPrefixScorer
+from libs.Amphion.modules.wenet_extractor.paraformer.search.scorer_interface import (
     ScorerInterface,
     PartialScorerInterface,
 )

@@ -5,8 +5,8 @@
 
 import torch.nn as nn
 
-from modules.diffusion import BiDilConv
-from modules.encoder.position_encoder import PositionEncoder
+from libs.Amphion.modules.diffusion import BiDilConv
+from libs.Amphion.modules.encoder.position_encoder import PositionEncoder
 
 
 class DiffusionWrapper(nn.Module):

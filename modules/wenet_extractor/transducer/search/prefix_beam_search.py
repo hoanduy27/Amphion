@@ -1,7 +1,7 @@
 from typing import List, Tuple
 
 import torch
-from modules.wenet_extractor.utils.common import log_add
+from libs.Amphion.modules.wenet_extractor.utils.common import log_add
 
 
 class Sequence:

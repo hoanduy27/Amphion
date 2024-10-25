@@ -6,15 +6,15 @@
 import torch
 import torch.nn as nn
 import os
-from utils.io import save_audio
+from libs.Amphion.utils.io import save_audio
 from tqdm import tqdm
-from models.tts.base import TTSTrainer
-from models.tts.jets.jets import Jets
-from models.tts.jets.jets_loss import GeneratorLoss, DiscriminatorLoss
-from models.tts.jets.jets_dataset import JetsDataset, JetsCollator
-from optimizer.optimizers import NoamLR
+from libs.Amphion.models.tts.base import TTSTrainer
+from libs.Amphion.models.tts.jets.jets import Jets
+from libs.Amphion.models.tts.jets.jets_loss import GeneratorLoss, DiscriminatorLoss
+from libs.Amphion.models.tts.jets.jets_dataset import JetsDataset, JetsCollator
+from libs.Amphion.optimizer.optimizers import NoamLR
 from torch.optim.lr_scheduler import ExponentialLR
-from models.vocoders.gan.discriminator.mpd import MultiScaleMultiPeriodDiscriminator
+from libs.Amphion.models.vocoders.gan.discriminator.mpd import MultiScaleMultiPeriodDiscriminator
 
 
 def get_segments(

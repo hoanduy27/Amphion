@@ -21,31 +21,31 @@
 #
 
 import torch
-from modules.wenet_extractor.transducer.joint import TransducerJoint
-from modules.wenet_extractor.transducer.predictor import (
+from libs.Amphion.modules.wenet_extractor.transducer.joint import TransducerJoint
+from libs.Amphion.modules.wenet_extractor.transducer.predictor import (
     ConvPredictor,
     EmbeddingPredictor,
     RNNPredictor,
 )
-from modules.wenet_extractor.transducer.transducer import Transducer
-from modules.wenet_extractor.transformer.asr_model import ASRModel
-from modules.wenet_extractor.transformer.cmvn import GlobalCMVN
-from modules.wenet_extractor.transformer.ctc import CTC
-from modules.wenet_extractor.transformer.decoder import (
+from libs.Amphion.modules.wenet_extractor.transducer.transducer import Transducer
+from libs.Amphion.modules.wenet_extractor.transformer.asr_model import ASRModel
+from libs.Amphion.modules.wenet_extractor.transformer.cmvn import GlobalCMVN
+from libs.Amphion.modules.wenet_extractor.transformer.ctc import CTC
+from libs.Amphion.modules.wenet_extractor.transformer.decoder import (
     BiTransformerDecoder,
     TransformerDecoder,
 )
-from modules.wenet_extractor.transformer.encoder import (
+from libs.Amphion.modules.wenet_extractor.transformer.encoder import (
     ConformerEncoder,
     TransformerEncoder,
 )
-from modules.wenet_extractor.squeezeformer.encoder import SqueezeformerEncoder
-from modules.wenet_extractor.efficient_conformer.encoder import (
+from libs.Amphion.modules.wenet_extractor.squeezeformer.encoder import SqueezeformerEncoder
+from libs.Amphion.modules.wenet_extractor.efficient_conformer.encoder import (
     EfficientConformerEncoder,
 )
-from modules.wenet_extractor.paraformer.paraformer import Paraformer
-from modules.wenet_extractor.cif.predictor import Predictor
-from modules.wenet_extractor.utils.cmvn import load_cmvn
+from libs.Amphion.modules.wenet_extractor.paraformer.paraformer import Paraformer
+from libs.Amphion.modules.wenet_extractor.cif.predictor import Predictor
+from libs.Amphion.modules.wenet_extractor.utils.cmvn import load_cmvn
 
 
 def init_model(configs):

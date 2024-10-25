@@ -2,7 +2,7 @@ from typing import List, Optional, Tuple
 
 import torch
 from torch import nn
-from modules.wenet_extractor.utils.common import get_activation, get_rnn
+from libs.Amphion.modules.wenet_extractor.utils.common import get_activation, get_rnn
 
 
 def ApplyPadding(input, padding, pad_value) -> torch.Tensor:

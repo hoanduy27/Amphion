@@ -6,7 +6,7 @@
 import random
 import torch
 from torch.nn.utils.rnn import pad_sequence
-from utils.data_utils import *
+from libs.Amphion.utils.data_utils import *
 from tqdm import tqdm
 from g2p_en import G2p
 import librosa
@@ -256,7 +256,7 @@ def batch_by_size(
 
 
 def test():
-    from utils.util import load_config
+    from libs.Amphion.utils.util import load_config
 
     cfg = load_config("./egs/tts/VALLE_V2/exp_ar_libritts.json")
     dataset = VALLEDataset(cfg.dataset)

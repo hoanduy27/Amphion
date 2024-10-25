@@ -24,9 +24,9 @@
 import numpy as np
 import torch
 
-from modules.wenet_extractor.paraformer.search.ctc_prefix_score import CTCPrefixScore
-from modules.wenet_extractor.paraformer.search.ctc_prefix_score import CTCPrefixScoreTH
-from modules.wenet_extractor.paraformer.search.scorer_interface import (
+from libs.Amphion.modules.wenet_extractor.paraformer.search.ctc_prefix_score import CTCPrefixScore
+from libs.Amphion.modules.wenet_extractor.paraformer.search.ctc_prefix_score import CTCPrefixScoreTH
+from libs.Amphion.modules.wenet_extractor.paraformer.search.scorer_interface import (
     BatchPartialScorerInterface,
 )
 

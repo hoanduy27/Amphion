@@ -4,12 +4,12 @@
 # LICENSE file in the root directory of this source tree.
 
 import re
-from models.tts.maskgct.g2p.g2p.japanese import japanese_to_ipa
-from models.tts.maskgct.g2p.g2p.mandarin import chinese_to_ipa
-from models.tts.maskgct.g2p.g2p.english import english_to_ipa
-from models.tts.maskgct.g2p.g2p.french import french_to_ipa
-from models.tts.maskgct.g2p.g2p.korean import korean_to_ipa
-from models.tts.maskgct.g2p.g2p.german import german_to_ipa
+from libs.Amphion.models.tts.maskgct.g2p.g2p.japanese import japanese_to_ipa
+from libs.Amphion.models.tts.maskgct.g2p.g2p.mandarin import chinese_to_ipa
+from libs.Amphion.models.tts.maskgct.g2p.g2p.english import english_to_ipa
+from libs.Amphion.models.tts.maskgct.g2p.g2p.french import french_to_ipa
+from libs.Amphion.models.tts.maskgct.g2p.g2p.korean import korean_to_ipa
+from libs.Amphion.models.tts.maskgct.g2p.g2p.german import german_to_ipa
 
 
 def cjekfd_cleaners(text, sentence, language, text_tokenizers):

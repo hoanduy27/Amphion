@@ -7,7 +7,7 @@
 
 import torch
 from torch import nn
-from modules.base.base_module import LayerNorm
+from libs.Amphion.modules.base.base_module import LayerNorm
 
 
 class DurationPredictor(nn.Module):

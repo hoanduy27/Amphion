@@ -24,7 +24,7 @@ from pedalboard import (
     PitchShift,
 )
 
-from utils.util import has_existed
+from libs.Amphion.utils.util import has_existed
 
 PRAAT_CHANGEGENDER_PITCHMEDIAN_DEFAULT = 0.0
 PRAAT_CHANGEGENDER_FORMANTSHIFTRATIO_DEFAULT = 1.0

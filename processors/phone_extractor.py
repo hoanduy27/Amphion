@@ -5,11 +5,11 @@
 
 import os
 from tqdm import tqdm
-from text.g2p_module import G2PModule, LexiconModule
-from text.symbol_table import SymbolTable
+from libs.Amphion.text.g2p_module import G2PModule, LexiconModule
+from libs.Amphion.text.symbol_table import SymbolTable
 
 """
-    phoneExtractor: extract phone from text
+    phoneExtractor: extract phone from libs.Amphion.text
 """
 
 
@@ -52,7 +52,7 @@ class phoneExtractor:
 
     def extract_phone(self, text):
         """
-        Extract phone from text
+        Extract phone from libs.Amphion.text
         Args:
 
             text:  text of utterance
@@ -97,7 +97,7 @@ class phoneExtractor:
 
 def extract_utt_phone_sequence(dataset, cfg, metadata):
     """
-    Extract phone sequence from text
+    Extract phone sequence from libs.Amphion.text
     Args:
         dataset (str): name of dataset, e.g. opencpop
         cfg: config

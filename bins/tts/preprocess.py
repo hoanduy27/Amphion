@@ -14,10 +14,10 @@ import pyworld as pw
 from multiprocessing import cpu_count
 
 
-from utils.util import load_config
-from preprocessors.processor import preprocess_dataset, prepare_align
-from preprocessors.metadata import cal_metadata
-from processors import (
+from libs.Amphion.utils.util import load_config
+from libs.Amphion.preprocessors.processor import preprocess_dataset, prepare_align
+from libs.Amphion.preprocessors.metadata import cal_metadata
+from libs.Amphion.processors import (
     acoustic_extractor,
     content_extractor,
     data_augment,

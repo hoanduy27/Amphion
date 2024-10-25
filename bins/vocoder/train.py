@@ -7,10 +7,10 @@ import argparse
 
 import torch
 
-from models.vocoders.gan.gan_vocoder_trainer import GANVocoderTrainer
-from models.vocoders.diffusion.diffusion_vocoder_trainer import DiffusionVocoderTrainer
+from libs.Amphion.models.vocoders.gan.gan_vocoder_trainer import GANVocoderTrainer
+from libs.Amphion.models.vocoders.diffusion.diffusion_vocoder_trainer import DiffusionVocoderTrainer
 
-from utils.util import load_config
+from libs.Amphion.utils.util import load_config
 
 
 def build_trainer(args, cfg):

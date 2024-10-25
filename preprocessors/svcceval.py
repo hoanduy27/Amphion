@@ -8,7 +8,7 @@ import glob
 import librosa
 import json
 
-from utils.util import has_existed
+from libs.Amphion.utils.util import has_existed
 
 
 def main(output_path, dataset_path):

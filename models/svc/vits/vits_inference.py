@@ -11,12 +11,12 @@ from tqdm import tqdm
 import torch
 from torch.utils.data import DataLoader
 
-from models.svc.base import SVCInference
-from models.svc.vits.vits import SynthesizerTrn
+from libs.Amphion.models.svc.base import SVCInference
+from libs.Amphion.models.svc.vits.vits import SynthesizerTrn
 
-from models.svc.base.svc_dataset import SVCTestDataset, SVCTestCollator
-from utils.io import save_audio
-from utils.audio_slicer import is_silence
+from libs.Amphion.models.svc.base.svc_dataset import SVCTestDataset, SVCTestCollator
+from libs.Amphion.utils.io import save_audio
+from libs.Amphion.utils.audio_slicer import is_silence
 
 
 class VitsInference(SVCInference):

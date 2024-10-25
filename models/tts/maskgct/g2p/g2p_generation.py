@@ -6,8 +6,8 @@
 import os
 import sys
 
-from models.tts.maskgct.g2p.g2p import PhonemeBpeTokenizer
-from models.tts.maskgct.g2p.utils.g2p import phonemizer_g2p
+from libs.Amphion.models.tts.maskgct.g2p.g2p import PhonemeBpeTokenizer
+from libs.Amphion.models.tts.maskgct.g2p.utils.g2p import phonemizer_g2p
 import tqdm
 from typing import List
 import json

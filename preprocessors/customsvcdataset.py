@@ -10,7 +10,7 @@ import torchaudio
 from tqdm import tqdm
 from collections import defaultdict
 
-from utils.util import has_existed
+from libs.Amphion.utils.util import has_existed
 
 
 def statistics(utterance_dir):

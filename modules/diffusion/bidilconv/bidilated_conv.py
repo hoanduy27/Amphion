@@ -7,7 +7,7 @@ import math
 
 import torch.nn as nn
 
-from modules.general.utils import Conv1d, zero_module
+from libs.Amphion.modules.general.utils import Conv1d, zero_module
 from .residual_block import ResidualBlock
 
 

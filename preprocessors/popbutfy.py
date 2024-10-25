@@ -11,8 +11,8 @@ from tqdm import tqdm
 from glob import glob
 from collections import defaultdict
 
-from utils.util import has_existed
-from preprocessors import GOLDEN_TEST_SAMPLES
+from libs.Amphion.utils.util import has_existed
+from libs.Amphion.preprocessors import GOLDEN_TEST_SAMPLES
 
 
 def get_test_songs():

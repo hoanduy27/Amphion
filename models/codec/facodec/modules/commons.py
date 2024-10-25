@@ -216,11 +216,11 @@ def load_F0_models(path):
 
 
 # Generators
-from modules.dac.model.dac import Encoder, Decoder
+from libs.Amphion.modules.dac.model.dac import Encoder, Decoder
 from .quantize import FAquantizer, FApredictors
 
 # Discriminators
-from modules.dac.model.discriminator import Discriminator
+from libs.Amphion.modules.dac.model.discriminator import Discriminator
 
 
 def build_model(args):

@@ -8,8 +8,8 @@ import math
 import torch
 import torch.nn as nn
 
-from modules.activation_functions import GaU
-from modules.general.utils import Conv1d
+from libs.Amphion.modules.activation_functions import GaU
+from libs.Amphion.modules.general.utils import Conv1d
 
 
 class ResidualBlock(nn.Module):

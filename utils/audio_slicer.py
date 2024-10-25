@@ -10,8 +10,8 @@ from tqdm import tqdm
 import torch
 import torchaudio
 
-from utils.io import save_audio
-from utils.audio import load_audio_torch
+from libs.Amphion.utils.io import save_audio
+from libs.Amphion.utils.audio import load_audio_torch
 
 
 # This function is obtained from librosa.

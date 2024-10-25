@@ -24,7 +24,7 @@ from typing import Optional
 
 import torch
 from torch import nn
-from modules.wenet_extractor.utils.mask import make_pad_mask
+from libs.Amphion.modules.wenet_extractor.utils.mask import make_pad_mask
 
 
 class Predictor(nn.Module):

@@ -25,7 +25,7 @@
 import math
 import torch
 import torch.nn as nn
-from modules.wenet_extractor.transformer.attention import MultiHeadedAttention
+from libs.Amphion.modules.wenet_extractor.transformer.attention import MultiHeadedAttention
 from typing import Tuple
 
 

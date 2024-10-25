@@ -17,9 +17,9 @@ from safetensors.torch import load_file
 
 from abc import abstractmethod
 from pathlib import Path
-from utils.io import save_audio
-from utils.util import load_config
-from models.vocoders.vocoder_inference import synthesis
+from libs.Amphion.utils.io import save_audio
+from libs.Amphion.utils.util import load_config
+from libs.Amphion.models.vocoders.vocoder_inference import synthesis
 
 
 class TTSInference(object):

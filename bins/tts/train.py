@@ -7,15 +7,15 @@ import argparse
 
 import torch
 
-from models.tts.fastspeech2.fs2_trainer import FastSpeech2Trainer
-from models.tts.vits.vits_trainer import VITSTrainer
-from models.tts.valle.valle_trainer import VALLETrainer
-from models.tts.naturalspeech2.ns2_trainer import NS2Trainer
-from models.tts.valle_v2.valle_ar_trainer import ValleARTrainer as VALLE_V2_AR
-from models.tts.valle_v2.valle_nar_trainer import ValleNARTrainer as VALLE_V2_NAR
-from models.tts.jets.jets_trainer import JetsTrainer
+from libs.Amphion.models.tts.fastspeech2.fs2_trainer import FastSpeech2Trainer
+from libs.Amphion.models.tts.vits.vits_trainer import VITSTrainer
+from libs.Amphion.models.tts.valle.valle_trainer import VALLETrainer
+from libs.Amphion.models.tts.naturalspeech2.ns2_trainer import NS2Trainer
+from libs.Amphion.models.tts.valle_v2.valle_ar_trainer import ValleARTrainer as VALLE_V2_AR
+from libs.Amphion.models.tts.valle_v2.valle_nar_trainer import ValleNARTrainer as VALLE_V2_NAR
+from libs.Amphion.models.tts.jets.jets_trainer import JetsTrainer
 
-from utils.util import load_config
+from libs.Amphion.utils.util import load_config
 
 
 def build_trainer(args, cfg):

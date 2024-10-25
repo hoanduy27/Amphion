@@ -15,15 +15,15 @@ from torch.utils.data import DataLoader
 from fairseq import checkpoint_utils
 from transformers import AutoModel, Wav2Vec2FeatureExtractor
 
-from utils.io_optim import (
+from libs.Amphion.utils.io_optim import (
     TorchaudioDataset,
     LibrosaDataset,
     FFmpegDataset,
     collate_batch,
 )
 import whisper
-from modules.wenet_extractor.utils.init_model import init_model
-from modules.wenet_extractor.utils.checkpoint import load_checkpoint
+from libs.Amphion.modules.wenet_extractor.utils.init_model import init_model
+from libs.Amphion.modules.wenet_extractor.utils.checkpoint import load_checkpoint
 
 """
     Extractor for content features

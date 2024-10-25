@@ -6,8 +6,8 @@
 import torch
 from diffusers import DDPMScheduler
 
-from models.svc.base import SVCTrainer
-from modules.encoder.condition_encoder import ConditionEncoder
+from libs.Amphion.models.svc.base import SVCTrainer
+from libs.Amphion.modules.encoder.condition_encoder import ConditionEncoder
 from .diffusion_wrapper import DiffusionWrapper
 
 

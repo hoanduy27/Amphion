@@ -7,8 +7,8 @@ import argparse
 from argparse import ArgumentParser
 import os
 
-from models.tta.ldm.audioldm_inference import AudioLDMInference
-from utils.util import save_config, load_model_config, load_config
+from libs.Amphion.models.tta.ldm.audioldm_inference import AudioLDMInference
+from libs.Amphion.utils.util import save_config, load_model_config, load_config
 import numpy as np
 import torch
 

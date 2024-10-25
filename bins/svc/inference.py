@@ -11,13 +11,13 @@ import json
 import torch
 import time
 
-from models.svc.diffusion.diffusion_inference import DiffusionInference
-from models.svc.comosvc.comosvc_inference import ComoSVCInference
-from models.svc.transformer.transformer_inference import TransformerInference
-from models.svc.vits.vits_inference import VitsInference
-from utils.util import load_config
-from utils.audio_slicer import split_audio, merge_segments_encodec
-from processors import acoustic_extractor, content_extractor
+from libs.Amphion.models.svc.diffusion.diffusion_inference import DiffusionInference
+from libs.Amphion.models.svc.comosvc.comosvc_inference import ComoSVCInference
+from libs.Amphion.models.svc.transformer.transformer_inference import TransformerInference
+from libs.Amphion.models.svc.vits.vits_inference import VitsInference
+from libs.Amphion.utils.util import load_config
+from libs.Amphion.utils.audio_slicer import split_audio, merge_segments_encodec
+from libs.Amphion.processors import acoustic_extractor, content_extractor
 
 
 def build_inference(args, cfg, infer_type="from_dataset"):

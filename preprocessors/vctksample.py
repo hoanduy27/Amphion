@@ -9,7 +9,7 @@ import pickle
 import glob
 from collections import defaultdict
 from tqdm import tqdm
-from preprocessors import get_golden_samples_indexes
+from libs.Amphion.preprocessors import get_golden_samples_indexes
 
 
 TRAIN_MAX_NUM_EVERY_PERSON = 250

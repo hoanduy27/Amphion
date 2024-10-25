@@ -14,9 +14,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 # from piq import LPIPS
-from utils.ssim import SSIM
+from libs.Amphion.utils.ssim import SSIM
 
-from modules.diffusion.karras.random_utils import get_generator
+from libs.Amphion.modules.diffusion.karras.random_utils import get_generator
 
 
 def mean_flat(tensor):

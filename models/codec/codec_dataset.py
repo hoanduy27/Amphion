@@ -8,7 +8,7 @@ import torch
 import numpy as np
 import torch.utils.data
 from torch.nn.utils.rnn import pad_sequence
-from utils.data_utils import *
+from libs.Amphion.utils.data_utils import *
 from torch.utils.data import ConcatDataset, Dataset
 
 

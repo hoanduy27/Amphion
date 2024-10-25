@@ -7,7 +7,7 @@ import torch
 import numpy as np
 
 from tqdm import tqdm
-from utils.util import pad_mels_to_tensors, pad_f0_to_tensors
+from libs.Amphion.utils.util import pad_mels_to_tensors, pad_f0_to_tensors
 
 
 def vocoder_inference(cfg, model, mels, f0s=None, device=None, fast_inference=False):

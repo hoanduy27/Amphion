@@ -7,9 +7,9 @@ import numpy as np
 import torch
 import torch.nn as nn
 from torchaudio.models import Conformer
-from models.svc.transformer.transformer import PositionalEncoding
+from libs.Amphion.models.svc.transformer.transformer import PositionalEncoding
 
-from utils.f0 import f0_to_coarse
+from libs.Amphion.utils.f0 import f0_to_coarse
 
 
 class ContentEncoder(nn.Module):

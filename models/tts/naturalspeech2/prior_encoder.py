@@ -7,7 +7,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 import torch.nn.functional as F
-from modules.naturalpseech2.transformers import (
+from libs.Amphion.modules.naturalpseech2.transformers import (
     TransformerEncoder,
     DurationPredictor,
     PitchPredictor,

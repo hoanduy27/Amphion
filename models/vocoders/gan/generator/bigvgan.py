@@ -10,9 +10,9 @@ import torch.nn as nn
 from torch.nn import Conv1d, ConvTranspose1d
 from torch.nn.utils import weight_norm, remove_weight_norm
 
-from modules.vocoder_blocks import *
-from modules.activation_functions import *
-from modules.anti_aliasing import *
+from libs.Amphion.modules.vocoder_blocks import *
+from libs.Amphion.modules.activation_functions import *
+from libs.Amphion.modules.anti_aliasing import *
 
 LRELU_SLOPE = 0.1
 

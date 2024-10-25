@@ -6,7 +6,7 @@
 import torch
 import torch.nn as nn
 
-from modules.general.utils import Conv1d
+from libs.Amphion.modules.general.utils import Conv1d
 
 
 class GaU(nn.Module):

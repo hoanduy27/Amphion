@@ -27,25 +27,25 @@ from librosa.filters import mel as librosa_mel_fn
 from accelerate.logging import get_logger
 from pathlib import Path
 
-from utils.io import save_audio
-from utils.data_utils import *
-from utils.util import (
+from libs.Amphion.utils.io import save_audio
+from libs.Amphion.utils.data_utils import *
+from libs.Amphion.utils.util import (
     Logger,
     ValueWindow,
     remove_older_ckpt,
     set_all_random_seed,
     save_config,
 )
-from utils.mel import extract_mel_features
-from models.vocoders.vocoder_trainer import VocoderTrainer
-from models.vocoders.diffusion.diffusion_vocoder_dataset import (
+from libs.Amphion.utils.mel import extract_mel_features
+from libs.Amphion.models.vocoders.vocoder_trainer import VocoderTrainer
+from libs.Amphion.models.vocoders.diffusion.diffusion_vocoder_dataset import (
     DiffusionVocoderDataset,
     DiffusionVocoderCollator,
 )
 
-from models.vocoders.diffusion.diffwave.diffwave import DiffWave
+from libs.Amphion.models.vocoders.diffusion.diffwave.diffwave import DiffWave
 
-from models.vocoders.diffusion.diffusion_vocoder_inference import vocoder_inference
+from libs.Amphion.models.vocoders.diffusion.diffusion_vocoder_inference import vocoder_inference
 
 supported_models = {
     "diffwave": DiffWave,

@@ -7,12 +7,12 @@ import json
 from tqdm import tqdm
 import os
 import torchaudio
-from utils import audio
+from libs.Amphion.utils import audio
 import csv
 import random
 
-from utils.util import has_existed
-from text import _clean_text
+from libs.Amphion.utils.util import has_existed
+from libs.Amphion.text import _clean_text
 import librosa
 import soundfile as sf
 from scipy.io import wavfile

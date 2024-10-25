@@ -8,10 +8,10 @@ import torch.nn as nn
 import numpy as np
 import torch.nn.functional as F
 
-from modules.transformer.Models import Encoder, Decoder
-from modules.transformer.Layers import PostNet
+from libs.Amphion.modules.transformer.Models import Encoder, Decoder
+from libs.Amphion.modules.transformer.Layers import PostNet
 from collections import OrderedDict
-from models.tts.jets.alignments import (
+from libs.Amphion.models.tts.jets.alignments import (
     AlignmentModule,
     viterbi_decode,
     average_by_duration,
@@ -19,12 +19,12 @@ from models.tts.jets.alignments import (
     make_non_pad_mask,
     get_random_segments,
 )
-from models.tts.jets.length_regulator import GaussianUpsampling
-from models.vocoders.gan.generator.hifigan import HiFiGAN
+from libs.Amphion.models.tts.jets.length_regulator import GaussianUpsampling
+from libs.Amphion.models.vocoders.gan.generator.hifigan import HiFiGAN
 import os
 import json
 
-from utils.util import load_config
+from libs.Amphion.utils.util import load_config
 
 
 def get_mask_from_lengths(lengths, max_len=None):

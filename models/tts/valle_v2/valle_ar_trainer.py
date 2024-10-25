@@ -55,7 +55,7 @@ class ValleARTrainer(BaseTrainer):
     def __init__(self, args=None, cfg=None):
         super().__init__(args, cfg)
         if self.cfg.use_speechtokenizer:
-            from models.codec.speechtokenizer.model import SpeechTokenizer
+            from libs.Amphion.models.codec.speechtokenizer.model import SpeechTokenizer
 
             config_path = "./ckpts/speechtokenizer_hubert_avg/config.json"
             ckpt_path = "./ckpts/speechtokenizer_hubert_avg/SpeechTokenizer.pt"
@@ -246,7 +246,7 @@ class ValleARTrainer(BaseTrainer):
                 for x in batch_sampler
                 if len(x) % self.accelerator.num_processes == 0
             ]
-            from models.base.base_sampler import VariableSampler
+            from libs.Amphion.models.base.base_sampler import VariableSampler
 
             train_loader = DataLoader(
                 train_dataset,

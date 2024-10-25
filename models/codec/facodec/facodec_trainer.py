@@ -24,11 +24,11 @@ import torchaudio
 
 from accelerate.logging import get_logger
 
-from models.codec.facodec.facodec_dataset import FAcodecDataset, FAcodecCollator
-from models.codec.codec_sampler import build_samplers
-from models.codec.codec_trainer import CodecTrainer
+from libs.Amphion.models.codec.facodec.facodec_dataset import FAcodecDataset, FAcodecCollator
+from libs.Amphion.models.codec.codec_sampler import build_samplers
+from libs.Amphion.models.codec.codec_trainer import CodecTrainer
 
-from modules.dac.nn.loss import (
+from libs.Amphion.modules.dac.nn.loss import (
     MultiScaleSTFTLoss,
     MelSpectrogramLoss,
     GANLoss,
@@ -47,13 +47,13 @@ except ImportError:
     )
     nemo_asr = None
 
-from models.codec.facodec.modules.commons import (
+from libs.Amphion.models.codec.facodec.modules.commons import (
     build_model,
     load_checkpoint,
     load_F0_models,
     log_norm,
 )
-from models.codec.facodec.optimizer import build_optimizer
+from libs.Amphion.models.codec.facodec.optimizer import build_optimizer
 
 
 class FAcodecTrainer(CodecTrainer):

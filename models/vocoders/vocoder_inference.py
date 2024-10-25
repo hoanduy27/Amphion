@@ -19,22 +19,22 @@ from glob import glob
 from accelerate.logging import get_logger
 from torch.utils.data import DataLoader
 
-from models.vocoders.vocoder_dataset import (
+from libs.Amphion.models.vocoders.vocoder_dataset import (
     VocoderDataset,
     VocoderCollator,
     VocoderConcatDataset,
 )
 
-from models.vocoders.gan.generator import bigvgan, hifigan, melgan, nsfhifigan, apnet
-from models.vocoders.flow.waveglow import waveglow
-from models.vocoders.diffusion.diffwave import diffwave
-from models.vocoders.autoregressive.wavenet import wavenet
-from models.vocoders.autoregressive.wavernn import wavernn
+from libs.Amphion.models.vocoders.gan.generator import bigvgan, hifigan, melgan, nsfhifigan, apnet
+from libs.Amphion.models.vocoders.flow.waveglow import waveglow
+from libs.Amphion.models.vocoders.diffusion.diffwave import diffwave
+from libs.Amphion.models.vocoders.autoregressive.wavenet import wavenet
+from libs.Amphion.models.vocoders.autoregressive.wavernn import wavernn
 
-from models.vocoders.gan import gan_vocoder_inference
-from models.vocoders.diffusion import diffusion_vocoder_inference
+from libs.Amphion.models.vocoders.gan import gan_vocoder_inference
+from libs.Amphion.models.vocoders.diffusion import diffusion_vocoder_inference
 
-from utils.io import save_audio
+from libs.Amphion.utils.io import save_audio
 
 _vocoders = {
     "diffwave": diffwave.DiffWave,
@@ -232,7 +232,7 @@ class VocoderInference(object):
         ) as f:
             json.dump(meta_info, f)
 
-        from processors import acoustic_extractor
+        from libs.Amphion.processors import acoustic_extractor
 
         acoustic_extractor.extract_utt_acoustic_features_serial(
             utts, os.path.join(self.cfg.preprocess.processed_dir, "tmp"), self.cfg

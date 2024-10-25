@@ -9,16 +9,16 @@ import torch
 from torch import nn
 from torch.nn import functional as F
 
-from utils.util import *
+from libs.Amphion.utils.util import *
 
-from modules.transformer.attentions import Encoder
-from models.tts.vits.vits import ResidualCouplingBlock, PosteriorEncoder
-from models.vocoders.gan.generator.bigvgan import BigVGAN
-from models.vocoders.gan.generator.hifigan import HiFiGAN
-from models.vocoders.gan.generator.nsfhifigan import NSFHiFiGAN
-from models.vocoders.gan.generator.melgan import MelGAN
-from models.vocoders.gan.generator.apnet import APNet
-from modules.encoder.condition_encoder import ConditionEncoder
+from libs.Amphion.modules.transformer.attentions import Encoder
+from libs.Amphion.models.tts.vits.vits import ResidualCouplingBlock, PosteriorEncoder
+from libs.Amphion.models.vocoders.gan.generator.bigvgan import BigVGAN
+from libs.Amphion.models.vocoders.gan.generator.hifigan import HiFiGAN
+from libs.Amphion.models.vocoders.gan.generator.nsfhifigan import NSFHiFiGAN
+from libs.Amphion.models.vocoders.gan.generator.melgan import MelGAN
+from libs.Amphion.models.vocoders.gan.generator.apnet import APNet
+from libs.Amphion.modules.encoder.condition_encoder import ConditionEncoder
 
 
 def slice_pitch_segments(x, ids_str, segment_size=4):

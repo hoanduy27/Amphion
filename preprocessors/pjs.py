@@ -9,8 +9,8 @@ import glob
 import json
 import torchaudio
 
-from utils.util import has_existed
-from utils.io import save_audio
+from libs.Amphion.utils.util import has_existed
+from libs.Amphion.utils.io import save_audio
 
 
 def get_splitted_utterances(

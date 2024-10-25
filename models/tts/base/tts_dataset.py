@@ -8,20 +8,20 @@ import os
 import torchaudio
 import numpy as np
 import torch
-from utils.data_utils import *
+from libs.Amphion.utils.data_utils import *
 from torch.nn.utils.rnn import pad_sequence
-from text import text_to_sequence
-from text.text_token_collation import phoneIDCollation
-from processors.acoustic_extractor import cal_normalized_mel
+from libs.Amphion.text import text_to_sequence
+from libs.Amphion.text.text_token_collation import phoneIDCollation
+from libs.Amphion.processors.acoustic_extractor import cal_normalized_mel
 
-from models.base.base_dataset import (
+from libs.Amphion.models.base.base_dataset import (
     BaseOfflineDataset,
     BaseOfflineCollator,
     BaseTestDataset,
     BaseTestCollator,
 )
 
-from processors.content_extractor import (
+from libs.Amphion.processors.content_extractor import (
     ContentvecExtractor,
     WenetExtractor,
     WhisperExtractor,
